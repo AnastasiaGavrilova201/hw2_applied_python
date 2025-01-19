@@ -4,3 +4,4 @@ import os
 load_dotenv()
 
 TOKEN = os.getenv('BOT_TOKEN')
+API = os.getenv('API_KEY')
