@@ -8,6 +8,7 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 import matplotlib.pyplot as plt
+from config import API
 
 router = Router()
 users = {}
@@ -158,7 +159,7 @@ async def process_city(message: Message, state: FSMContext):
 
 # функция для получения температуры в городе через апи
 def get_weather(city):
-    api_key = ''
+    api_key = API
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
     base_url = base_url + "appid=" + api_key + "&units=metric" + "&q=" + city
     response = requests.get(base_url)
