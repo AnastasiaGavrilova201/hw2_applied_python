@@ -158,7 +158,7 @@ async def process_city(message: Message, state: FSMContext):
 
 # функция для получения температуры в городе через апи
 def get_weather(city):
-    api_key = '95a7a3c9994296d3614d4e1ebde14090'
+    api_key = ''
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
     base_url = base_url + "appid=" + api_key + "&units=metric" + "&q=" + city
     response = requests.get(base_url)
