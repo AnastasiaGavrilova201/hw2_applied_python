@@ -175,7 +175,7 @@ def calc_water(data):
     flg = 0
     if temperature > 25:
         flg = 1
-    result = 30*weight + 500*active/30 + flg*500
+    result = 30*weight + 500*active/30 + flg*500 # в дз было написано +500 - 1000 при жаркой погоде, я решила оставить +500 по логике
     return result
 
 # функция для расчета нормы калорий
@@ -186,7 +186,7 @@ def calc_calories(data):
     sex = data['sex']
     active = data['active']
     coef = 1.2
-    if 10 < active and active < 20:
+    if 10 <= active and active < 20:
         coef = 1.375
     elif 20 <= active and active < 30:
         coef = 1.55
@@ -288,12 +288,12 @@ def activities():
     data = []
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, 'html.parser')
-        activities_table = soup.find_all('table')  # .find_all('Спортивные игры и упражнения')
+        activities_table = soup.find_all('table')  
         for row in activities_table:
             columns = row.find_all('td')
             for i in columns:
-                el = str(i).replace('/', '').replace('<td>', '').replace('<strong>', '')
-                data.append(el)
+                element = str(i).replace('/', '').replace('<td>', '').replace('<strong>', '')
+                data.append(element)
     data = data[2:]
     rows = []
     headers = [data[i].strip() for i in range(6)]
